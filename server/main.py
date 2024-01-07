@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 
 from stt import speech_to_text as stt
-from resumeParser import resumeGenerator
+from resumeParser import resumeGenerator, coverLetter
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = ''
@@ -16,7 +16,7 @@ def scrapeJobDescription():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     jobDescription = soup.get_text()
-    client = OpenAI(api_key="")
+    client = OpenAI(api_key="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")
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
         messages=[
@@ -44,12 +44,12 @@ def process_data():
     file = request.files['file']
     text1 = request.form.get('text1')
     text2 = request.form['text2']
-    print(request.form)
-    print(text1, text2)
-    if file:
+    if (file):
         filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filename) 
-        if text2 == 'resume':
+        if text2 == "Submit resume":
+            coverLetter(file)
+        if text2 == "Submit Resume":
             resumeGenerator(filename)
         return "Successfully Uploaded"
     return "Error"
@@ -68,7 +68,7 @@ def save():
 
 def audioGenerate():
     userSpeech = stt("recorded_audio.mp3")
-    client = OpenAI(api_key="")
+    client = OpenAI(api_key="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")
     messageHistory.append({"role": "user", "content": userSpeech})
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
