@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?=family=Material+Icons" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- interviewer video centered -->
+        <div class="interviewer">
+            <video id="interviewer" muted loop>
+                <source src="/static/images/istockphoto-1212501173-640_adpp_is.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div class="container">
+        <button class="mic-toggle" id="mic">
+            <span class="material icons"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                    fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
+                    <path
+                        d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5" />
+                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3" />
+                </svg></span>
+        </button>
+
+        <audio src="" class="playback" controls></audio>
+    </div>
+    <script type="text/javascript" src="{{url_for('static', filename='script/script.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/dist/lame.all.js"></script>
+</body>
+
+</html>
