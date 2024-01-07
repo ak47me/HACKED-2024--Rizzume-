@@ -1,5 +1,5 @@
-const dataToSend = { some_key: 'some_value' };
-chrome.runtime.sendMessage({ action: 'sendData', data: dataToSend }, response => {
+const dataToSend = { 0: "Hello World" };
+chrome.runtime.sendMessage({ action: 'resume', data: dataToSend }, response => {
     if (chrome.runtime.lastError) {
         console.error(chrome.runtime.lastError.message);
     } else if (response) {
@@ -7,3 +7,4 @@ chrome.runtime.sendMessage({ action: 'sendData', data: dataToSend }, response =>
         // Handle the result as needed
     }
 });
+
