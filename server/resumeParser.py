@@ -5,7 +5,7 @@ import os
 from pdfminer.high_level import extract_text
 import subprocess
 
-API_KEY = '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'
+API_KEY = ''
 openai = OpenAI(api_key=API_KEY)
 
 def textgeneration(prompt):
