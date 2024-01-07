@@ -1,25 +1,10 @@
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'resume') {
-      fetch('http://127.0.0.1:5000/resume', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(message.data)
-      })
-      .then(response => {
-        console.log(response);
-        return response.json()
-      })
-      .then(data => {
-          // Send the response back to the content script
-          console.log(data);
-          sendResponse({ "result": data.result });
-      })
-      .catch(error => {
-          console.error('Error:', error);
-      });
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    console.log(message)
+    if (message === "currTab") {
+        console.log("inside loop")
+        chrome.tabs.query({ currentWindow: true, active: true}, (tab)=>{
+            console.log(tab[0].url);
+            sendResponse(tab[0].url);
+        });
     }
-    return true;  // Indicates the asynchronous sendResponse is used
-  });
-  
+});
