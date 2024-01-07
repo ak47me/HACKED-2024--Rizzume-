@@ -1,5 +1,5 @@
 from openai import OpenAI
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="")
 
 def speech_to_text(audio_file_path):
   audio_file = open(audio_file_path, "rb")
