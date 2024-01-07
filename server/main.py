@@ -68,7 +68,7 @@ def save():
 
 def audioGenerate():
     userSpeech = stt("recorded_audio.mp3")
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="")
     messageHistory.append({"role": "user", "content": userSpeech})
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
