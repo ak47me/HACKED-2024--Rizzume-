@@ -16,7 +16,7 @@ def scrapeJobDescription():
     page = requests.get(url)
     soup = BeautifulSoup(page.content, 'html.parser')
     jobDescription = soup.get_text()
-    client = OpenAI(api_key="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")
+    client = OpenAI(api_key="")
     response = client.chat.completions.create(
         model="gpt-3.5-turbo-1106",
         messages=[
